@@ -1,14 +1,29 @@
 package com.dzirt.spring.entities;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "products")
 public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
 	private Long id;
+	@Column
 	private String name;
+	@Column
 	private String description;
+	@Column
 	private BigDecimal price;
 
 	public Product() {
+	}
+
+	public Product(String name, String description, BigDecimal price) {
+		this.name = name;
+		this.description = description;
+		this.price = price;
 	}
 
 	public Product(Long id, String name, String description, BigDecimal price) {

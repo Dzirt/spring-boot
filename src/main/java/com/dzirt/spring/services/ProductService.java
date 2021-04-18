@@ -1,7 +1,7 @@
 package com.dzirt.spring.services;
 
 import com.dzirt.spring.entities.Product;
-import com.dzirt.spring.repositories.ProductRepository;
+import com.dzirt.spring.repositories.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,29 +10,29 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    private ProductRepository productRepository;
+    private ProductDAO productDAO;
 
     @Autowired
-    public void setProductRepository(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public void setProductRepository(ProductDAO productDAO) {
+        this.productDAO = productDAO;
     }
 
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return productDAO.findAll();
     }
 
     public Product getByID(Long id) {
-        return productRepository.findById(id);
+        return productDAO.findById(id);
     }
 
     public void remove(Long id) {
-        productRepository.remove(id);
+        productDAO.remove(id);
     }
 
     public void add(Product product) {
-        productRepository.add(product);
+        productDAO.add(product);
     }
     public void update(Product product) {
-        productRepository.update(product);
+        productDAO.update(product);
     }
 }
